@@ -1,0 +1,80 @@
+---
+name: Pool Contract Code
+menu: Development
+route: /dev-pool-contract
+---
+
+# Pool Contract Code
+
+<a target="_blank" href="https://github.com/HornDeFi/horn-pool-contract/blob/master/contracts/HornLockVault.sol">View the source code on github</a>
+
+Each pool have their own contract address which is referrenced in the Master Contract
+
+<hr/>
+
+All those calls are available through each pool smart contract to interact with, you can use Web3 or our own interface to call them
+
+
+Use to fetch your possible claimable balance for this pool
+```
+ function claimableBalanceOf(address account)
+        public
+        view
+        override
+        returns (uint256)
+```
+
+Use to fetch your left Horn bonus available for withdraw from the current day
+```
+ function claimableHornOf(address account)
+        public
+        view
+        override
+        returns (uint256)
+```
+
+Return the amount of locked asset you added into the pool
+```
+function lockedAssets() public view override returns (uint256)
+```
+
+Return your total amount Horn burned into the pool to increase your pool share
+```
+  function getBurnedHornAmount(address account)
+        public
+        view
+        returns (uint256)
+```
+
+To make a new deposit into the pool, specifying the amount and the possible referral address for extra bonus fee
+```
+ function deposit(uint256 amount, address referralAddr)
+```
+
+Return the total fees that you are able to claim for your next withdraw
+```
+function claimableFees(address account, uint256 index)
+        public
+        view
+        returns (uint256)
+```
+
+Return your total weight percent in the pool from all your locked assets
+```
+  function weightInPool(uint256 index) public view returns (uint256)
+```
+
+To withdraw all your locked assets plus any bonus redeemable from the pool
+```
+ function withdraw() external payable override returns (bool)
+```
+
+Use it to burn your Horn in the pool to increase your pool share
+```
+function burn(uint256 amount) external payable override returns (bool)
+```
+
+Use it to claim your Horn available daily on the pool
+```
+function claimHorn() public payable
+```

@@ -1,0 +1,28 @@
+---
+name: Master Contract Code
+menu: Development
+route: /dev-master-contract
+---
+
+# Master Contract Code
+
+<a target="_blank" href="https://github.com/HornDeFi/horn-pool-contract/blob/master/contracts/UnifiedHornVault.sol">View the source code on github</a>
+
+Ethereum Contract
+```
+0x509c136121E1C60D3EAc26ea20FEEaE1f51959BA
+```
+
+You can call this method to fetch the list of pools indexes (contract address):
+```
+function fetchIndexes() public view returns (address[] memory) 
+```
+
+Web3 sample:
+
+```
+const web3 = new Web3(PROVIDER);
+const contract = new web3.eth.Contract(json.abi, "0xcontract");
+contract.methods.fetchIndexes().call({from: account})
+-> ["0xpoolcontract..", ...]
+```
